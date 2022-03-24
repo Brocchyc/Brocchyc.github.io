@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="隐函数定理压缩映像原理完备度量空间 $X$ 及映射 $f:X\rightarrow X$ ，若 $f$ 是压缩映射，即：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐函数定理及动力系统初步">
+<meta property="og:url" content="http://example.com/2021/07/11/math-analysis-1/index.html">
+<meta property="og:site_name" content="Brocc.&#39;s Blog">
+<meta property="og:description" content="隐函数定理压缩映像原理完备度量空间 $X$ 及映射 $f:X\rightarrow X$ ，若 $f$ 是压缩映射，即：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-11T08:32:00.000Z">
+<meta property="article:modified_time" content="2022-02-18T11:38:27.673Z">
+<meta property="article:author" content="Brocc.">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/07/11/math-analysis-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>隐函数定理及动力系统初步 | Brocc.'s Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?830c2ad93d0df5961b2862a229a93e13";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Brocc.'s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">好好学习，好好睡觉。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/11/math-analysis-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Brocc.">
+      <meta itemprop="description" content="天地有正气，杂然赋流形">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brocc.'s Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          隐函数定理及动力系统初步
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-11 16:32:00" itemprop="dateCreated datePublished" datetime="2021-07-11T16:32:00+08:00">2021-07-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-18 19:38:27" itemprop="dateModified" datetime="2022-02-18T19:38:27+08:00">2022-02-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">分析</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="隐函数定理"><a href="#隐函数定理" class="headerlink" title="隐函数定理"></a>隐函数定理</h2><h3 id="压缩映像原理"><a href="#压缩映像原理" class="headerlink" title="压缩映像原理"></a>压缩映像原理</h3><p>完备度量空间 $X$ 及映射 $f:X\rightarrow X$ ，若 $f$ 是压缩映射，即：<br> <span id="more"></span></p>
+<script type="math/tex; mode=display">
+\exists 0<c<1\quad\forall x,y\in X\quad s.t.\quad d(f(x),f(y))\leq c\cdot d(x,y)</script><p>则 $f$ 有唯一不动点 $x_0$</p>
+<h3 id="反函数定理"><a href="#反函数定理" class="headerlink" title="反函数定理"></a>反函数定理</h3><p>映射 $f：\mathbb{R}^m\rightarrow \mathbb{R}^n\quad s.t.\quad f(x_0)=y_0$ 在 $x_0$ 邻域内连续可微且在 $x_0$ 处Jacobi矩阵非异，则 $\exists y_0$ 邻域，$f$ 在其上有连续可微反函数 $g(y)=x$</p>
+<p>证明：</p>
+<p>存在性：不妨 $x_0=0\quad y_0=0\quad f’(x_0)=I_m$</p>
+<p>令 $y=f(x)=x+\phi(x)$ 则 $\phi(0)=0\quad \phi’(0)=0$</p>
+<p>考虑 $y_0$ 小邻域（闭邻域）内的函数空间，其上范数</p>
+<script type="math/tex; mode=display">
+||\psi(y)|| \triangleq \max_{y}|\psi(y)|</script><p>由一致收敛的Cauchy收敛准则，这是一个完备度量空间</p>
+<p>定义其上算子</p>
+<script type="math/tex; mode=display">
+(A\psi)(y)\triangleq -\phi(y+\psi(y))</script><p>证明 $A\psi$ 是压缩映射：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    ||A\psi_1-A\psi_2||&=\max_y|\phi(y+\psi_2(y))-\phi(y+\psi_1(y))|\\
+    &\leq \max_y \frac{1}{2} |\psi_1(y)-\psi_2(y)|\\
+    &=\frac{1}{2}||\psi_1-\psi_2||
+\end{aligned}</script><p>由压缩映像原理 $y_0$ 邻域存在唯一的 $\psi \quad s.t.\quad A\psi=\psi \Leftrightarrow g(y)=y+\psi(y) \quad s.t.\quad gf=I_m$</p>
+<p>可微性: 在 $x_0$ 小邻域内取 $x\quad f(x)=y\quad f(x+h)=y+k$ 则 $g(y)=x\quad g(y+k)=x+h$</p>
+<p> 记 $f’(x)=T$  </p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+     &g(y+k)-g(y)-T^{-1}k=T^{-1}(Th-(f(x+h)-f(x)))\\
+&\Rightarrow \left\lvert\frac{g(y+k)-g(y)-T^{-1}k}{k}\right\rvert
+=
+\left\lvert\frac{T^{-1}(Th-(f(x+h)-f(x)))}{k}\right\rvert\\
+&\leq \frac{\lVert T^{-1}\rVert}{\lambda}\cdot \left\lvert\frac{Th-(f(x+h)-f(x))}{k}\right\rvert
+ \end{aligned}</script><p> 其中 $\lambda$ 是 $f’$ 在小邻域内算子范数的最小值，即证可微性。</p>
+<h3 id="隐函数定理-1"><a href="#隐函数定理-1" class="headerlink" title="隐函数定理"></a>隐函数定理</h3><p> 映射 $f:\mathbb{R}^n\times \mathbb{R}^m\rightarrow \mathbb{R}^m\quad f(x_0,y_0)=0$ 且 $f$ 在 $(x_0,y_0)$ 小邻域内连续可微， $D_yf(x_0,y_0)$非异</p>
+<p> 则在 $x_0$ 小邻域上满足 $f(x,y)=0$ 的 $y$ 表示成 $x$ 的连续可微函数 $y=\phi(x)$， 即：$f(x,\phi(x))=0$</p>
+<p> 证明：定义函数 $F:\mathbb{R}^n\times\mathbb{R}^m\rightarrow \mathbb{R}^n\times \mathbb{R}^m$ 如下：</p>
+<script type="math/tex; mode=display">F(x,y)\triangleq (x,f(x,y))</script><p> 则有 </p>
+<script type="math/tex; mode=display">
+ DF = \begin{pmatrix}I_n&\\D_xf&D_yf\end{pmatrix}</script><p> 显见 $DF$ 在 $(x_0,y_0)$ 处非异</p>
+<p> 对 $F$ 在 $(x_0,y_0)$ 处应用反函数定理得到:</p>
+<script type="math/tex; mode=display">
+ G(x,f(x,y))=(x,y)</script><p> 由</p>
+<script type="math/tex; mode=display">
+ G(x,0)=(x,y)</script><p> 即得 $y$ 关于 $x$ 的显式表示。</p>
+<h2 id="动力系统初步"><a href="#动力系统初步" class="headerlink" title="动力系统初步"></a>动力系统初步</h2><p>作为压缩映像原理的又一应用，证明动力系统解的存在唯一性定理。</p>
+<h3 id="动力系统解的存在唯一性定理"><a href="#动力系统解的存在唯一性定理" class="headerlink" title="动力系统解的存在唯一性定理"></a>动力系统解的存在唯一性定理</h3><script type="math/tex; mode=display">
+\begin{cases}
+    \dot{x}=v(x,t)\\
+    x_0=\xi 
+\end{cases}</script><p>$v$ 在某个小邻域上连续可微，则动力系统局部存在唯一的解 $x=\phi(t)$</p>
+<p>证明：将微分方程转化为积分方程：</p>
+<script type="math/tex; mode=display">
+\phi(t)=x_0+\int_{t_0}^t\!v(\phi(\tau),\tau)\,\mathrm{d}\tau</script><p>定义算子：</p>
+<script type="math/tex; mode=display">
+A\phi\triangleq x_0+\int_{t_0}^t\!v(\phi(\tau),\tau)\,\mathrm{d}\tau</script><p>证明 $A\phi$ 是压缩映射：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    ||A\phi_1-A\phi_2||
+    &\leq\int_{t_0}^t\!|v(\phi_1(\tau),\tau)-v(\phi_2(\tau),\tau)|\,\mathrm{d}\tau\\
+    &\leq L\int_{t_0}^t|\phi_1(\tau)-\phi_2(\tau)|\mathrm{d}\tau\\
+    &\leq L\alpha||\phi_1-\phi_2||
+\end{aligned}</script><p>其中 $L$ 是 $\dfrac{\partial v}{\partial x}$ 模长最大值，$\alpha$ 是 $(t,x)\ \text{邻域中}\, |t-t_0|$ 最大值。可选取充分小的邻域使 $L\alpha &lt;1$</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Brocc.
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/07/11/math-analysis-1/" title="隐函数定理及动力系统初步">http://example.com/2021/07/11/math-analysis-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/10/Markdown/" rel="prev" title="Markdown">
+      <i class="fa fa-chevron-left"></i> Markdown
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/12/manifolds-1/" rel="next" title="1.微分流形">
+      1.微分流形 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NTUzNy8zMjAwNA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">隐函数定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E6%98%A0%E5%83%8F%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">压缩映像原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%87%BD%E6%95%B0%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">反函数定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E5%87%BD%E6%95%B0%E5%AE%9A%E7%90%86-1"><span class="nav-number">1.3.</span> <span class="nav-text">隐函数定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F%E5%88%9D%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">动力系统初步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F%E8%A7%A3%E7%9A%84%E5%AD%98%E5%9C%A8%E5%94%AF%E4%B8%80%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">动力系统解的存在唯一性定理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Brocc.</p>
+  <div class="site-description" itemprop="description">天地有正气，杂然赋流形</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=997599826@qq.com" title="E-Mail → http:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;997599826@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wei-wu-81-49" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wei-wu-81-49" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019-08 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Brocc.</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

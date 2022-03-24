@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="曲率曲率张量定义 1.1. 仿射流形 $(M,\nabla)$ 上的曲率算子定义如下： \begin{aligned}         R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)&amp;\rightarrow\mathfrak{X}(M)\\         (X,Y,Z)\quad&amp;\longmapsto R(X,Y)Z\tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黎曼几何2：曲率张量">
+<meta property="og:url" content="http://example.com/2022/03/24/Riemann-geometry-2/index.html">
+<meta property="og:site_name" content="Brocc.&#39;s Blog">
+<meta property="og:description" content="曲率曲率张量定义 1.1. 仿射流形 $(M,\nabla)$ 上的曲率算子定义如下： \begin{aligned}         R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)&amp;\rightarrow\mathfrak{X}(M)\\         (X,Y,Z)\quad&amp;\longmapsto R(X,Y)Z\tr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-24T13:08:34.000Z">
+<meta property="article:modified_time" content="2022-03-24T13:36:09.750Z">
+<meta property="article:author" content="Brocc.">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/03/24/Riemann-geometry-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>黎曼几何2：曲率张量 | Brocc.'s Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?830c2ad93d0df5961b2862a229a93e13";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Brocc.'s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">好好学习，好好睡觉。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/24/Riemann-geometry-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Brocc.">
+      <meta itemprop="description" content="天地有正气，杂然赋流形">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brocc.'s Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          黎曼几何2：曲率张量
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-24 21:08:34 / 修改时间：21:36:09" itemprop="dateCreated datePublished" datetime="2022-03-24T21:08:34+08:00">2022-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%87%A0%E4%BD%95/" itemprop="url" rel="index"><span itemprop="name">几何</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%87%A0%E4%BD%95/%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/" itemprop="url" rel="index"><span itemprop="name">黎曼几何</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="曲率"><a href="#曲率" class="headerlink" title="曲率"></a>曲率</h1><h2 id="曲率张量"><a href="#曲率张量" class="headerlink" title="曲率张量"></a>曲率张量</h2><p><strong>定义 1.1</strong>. 仿射流形 $(M,\nabla)$ 上的<strong>曲率算子</strong>定义如下：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)&\rightarrow\mathfrak{X}(M)\\
+        (X,Y,Z)\quad&\longmapsto R(X,Y)Z\triangleq -\nabla_X\nabla_YZ+\nabla_Y\nabla_XZ+\nabla_{[X,Y]}Z
+    \end{aligned}</script><p><span id="more"></span>也即：<script type="math/tex">R(X,Y)\triangleq -\nabla_X\nabla_Y+\nabla_Y\nabla_X+\nabla_{[X,Y]}</script></p>
+<p><strong>命题 1.1</strong>. 曲率算子 $R$ 具有如下性质：</p>
+<ol>
+<li><p>$R(X,Y)=-R(Y,X)$</p>
+</li>
+<li><p>$R(X,Y)Z$ 关于 $X,Y,Z$ 三个变元均为 $C^\infty(M)$-线性的，即 $R$<br>为三 $C^\infty(M)$-线性的</p>
+</li>
+<li><p>当挠率算子 $T\equiv 0$ 时，成立<br><strong>第一Bianchi恒等式</strong>：<script type="math/tex">R(X,Y)Z+R(Y,Z)X+R(Z,X)Y=0</script></p>
+</li>
+</ol>
+<p><strong>证明</strong> (1)(2)可直接计算验证，下面证明(3) <script type="math/tex">\begin{aligned}
+        R(X,Y)Z+R(Y,Z)X+R(Z,X)Y=&-\nabla_X\nabla_YZ+\nabla_Y\nabla_XZ+\nabla_{[X,Y]}Z\\
+        &-\nabla_Y\nabla_ZX+\nabla_Z\nabla_YX+\nabla_{[Y,Z]}X\\
+        &-\nabla_Z\nabla_XY+\nabla_X\nabla_ZY+\nabla_{[Z,X]}Y\\
+    =&X[Z,Y]+Y[X,Z]+Z[Y,X]+\\
+    &\nabla_{[X,Y]}Z+\nabla_{[Y,Z]}X+\nabla_{[X,Z]}Y\\
+    =&[[Y,Z],X]+[[Z,X],Y]+[[X,Y]Z]\\
+    =&0    \end{aligned}</script><br>    $\square$</p>
+<p><strong>定义 1.2</strong>. 黎曼流形 $(M,g)$，从上面定义的算子 $R$ 出发可以定义<br><strong>曲率张量</strong> <script type="math/tex">\begin{aligned}
+        R:\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)\times\mathfrak{X}(M)&\rightarrow C^\infty(M)\\
+        (X,Y,Z,W)\quad&\longmapsto R(X,Y,Z,W)\triangleq\left<R(X,Y)Z,W\right>
+    \end{aligned}</script> 这是 $M$ 上的四阶协变张量。</p>
+<p><strong>命题 1.2</strong>.</p>
+<ol>
+<li><p>$R(X,Y,Z,W)=-R(Y,X,Z,W)$</p>
+</li>
+<li><p>$R(X,Y,Z,W)=-R(X,Y,W,Z)$</p>
+</li>
+<li><p>$R(X,Y,Z,W)=R(Z,W,X,Y)$</p>
+</li>
+<li><p>$R(X,Y,Z,W)+R(Y,Z,X,W)+R(Z,X,Y,W)=0$(第一Bianchi恒等式)</p>
+</li>
+</ol>
+<p><strong>证明</strong> (1)(4)由1.1中的(1)(3)直接得到。下面证明(2)(3)</p>
+<p>(2)$\Leftrightarrow R(X,Y,Z,Z)=0$</p>
+<p>因为<br>$R(X,Y,Z,Z)=0 \Rightarrow R(X,Y,Z+W,Z+W)=0 \Rightarrow R(X,Y,Z,W)+R(X,Y,W,Z)=0$</p>
+<p>而 <script type="math/tex">\begin{aligned}
+        R(X,Y,Z,Z)=&\left<R(X,Y)Z,Z\right>\\
+        =&\left<-\nabla_X\nabla_YZ+\nabla_Y\nabla_XZ+\nabla_{[X,Y]}Z,Z\right>
+    \end{aligned}</script><br>    其中 <script type="math/tex">\begin{aligned}
+        \left<-\nabla_X\nabla_YZ,Z\right>&=-X\left<\nabla_YZ,Z\right>+\left<\nabla_YZ,\nabla_XZ\right>\\
+        \left<\nabla_Y\nabla_XZ,Z\right>&=Y\left<\nabla_XZ,Z\right>-\left<\nabla_XZ,\nabla_YZ\right>
+    \end{aligned}</script><br>    代入得 <script type="math/tex">\begin{aligned}
+        R(X,Y,Z,Z)&=-X\left<\nabla_YZ,Z\right>+Y\left<\nabla_XZ,Z\right>+\left<\nabla_{[X,Y]}Z,Z\right>\\
+        &=-\dfrac{1}{2}XY\left<Z,Z\right>+\dfrac{1}{2}YX\left<Z,Z\right>+\dfrac{1}{2}[X,Y]\left<Z,Z\right>\\
+        &=0
+    \end{aligned}</script><br>    要证明(3)对 $X,Y,Z,W$ 轮换并应用第一Bianchi恒等式：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        R(X,Y,Z,W)+R(Y,Z,X,W)+R(Z,X,Y,W)=0\\
+        R(Y,Z,W,X)+R(Z,W,Y,X)+R(W,Y,Z,X)=0\\
+        R(Z,W,X,Y)+R(W,X,Z,Y)+R(X,Z,W,Y)=0\\
+        R(W,X,Y,Z)+R(X,Y,W,Z)+R(Y,W,X,Z)=0
+    \end{aligned}</script><p>对以上四式子求和，注意到每一式前两项在求和后被消去。从而</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        &R(Z,X,Y,W)+R(W,Y,Z,X)+R(X,Z,W,Y)+R(Y,W,X,Z)=0\\
+        \Leftrightarrow &\quad 2\left(R(X,Z,W,Y)-R(W,Y,X,Z)\right)=0\\
+        \Leftrightarrow &\quad R(X,Z,W,Y)=R(W,Y,X,Z)
+    \end{aligned}</script><p>取一组标架 $\{e_i\}$，记 $R(e_i,e_j,e_k,e_l)=R_{ijkl}$<br>为曲率张量在对偶标架 $\{\omega^i\}$<br>下的系数。则曲率张量的性质1.2可以翻译为分量形式：</p>
+<p><strong>命题 1.3</strong>.</p>
+<ol>
+<li><p>$R_{ijkl}=-R_{jikl}$</p>
+</li>
+<li><p>$R_{ijkl}=-R_{ijlk}$</p>
+</li>
+<li><p>$R_{ijkl}=R_{klij}$</p>
+</li>
+<li><p>$R_{ijkl}+R_{jkil}+R_{kijl}=0$</p>
+</li>
+</ol>
+<h2 id="截面曲率"><a href="#截面曲率" class="headerlink" title="截面曲率"></a>截面曲率</h2><p><strong>定义 1.3</strong>. 黎曼流形 $(M,g)$ 在一点 $p\in M$<br>处关于切空间的二维子空间(截面)$\sigma \subset T_pM$<br>的<strong>截面曲率</strong>定义为： </p>
+<script type="math/tex; mode=display">\mathrm{K}_p(\sigma)\triangleq\dfrac{R(x,y,x,y)}{G(x,y,x,y)}</script><p>其中 $x,y\in T_pM$ 是截面 $\sigma$ 的一组基，即：$\sigma=\text{span}\{x,y\}$</p>
+<p>张量 $G$ 通过下式定义：</p>
+<script type="math/tex; mode=display">G(X,Y,Z,W)\triangleq \left<X,Z\right>\left<Y,W\right>-\left<X,W\right>\left<Y,Z\right></script><p>上述定义的合理性需要证明，即要证明 $K_p(\sigma)$ 与基<br>$x,y$ 的选取无关。</p>
+<p>事实上，若 $x’=ax+by,y’=cx+dy$ 是 $\sigma \subset T_pM$<br>的另一组基，则有： <script type="math/tex">\begin{aligned}
+    R(x',y',x',y')=(ad-bc)^2R(x,y,x,y)\\
+    G(x',y',x',y')=(ad-bc)^2G(x,y,x,y)\end{aligned}</script> 从而定义是合理的。</p>
+<p><strong>引理 1.4</strong>. 对于满足命题1.2中性质(1)-(4)的两个张量$R,R’$，若 <script type="math/tex">R(X,Y,X,Y)=R'(X,Y,X,Y)</script> 对一切 $X,Y\in \mathfrak{X}(M)$ 均成立, 则 $R\equiv R’$</p>
+<p><strong>证明</strong> <script type="math/tex">\begin{aligned}
+        &R(X+Z,Y,X+Z,Y)=R'(X+Z,Y,X+Z,Y)\\
+        \Leftrightarrow &\,R(X,Y,Z,Y)=R'(X,Y,Z,Y)\\
+        \Leftrightarrow &\,R(X,Y+W,Z,Y+W)=R'(X,Y+W,Z,Y+W)\\
+        \Leftrightarrow &\,R(X,Y,Z,W)+R(X,W,Z,Y)=R'(X,Y,Z,W)+R'(X,W,Z,Y)\\
+        \Leftrightarrow &\,R(X,Y,Z,W)-R'(X,Y,Z,W)=R(Y,Z,X,W)-R'(Y,Z,X,W)
+    \end{aligned}</script>即：$R-R’$ 关于 $X,Y,Z$ 轮换不变。</p>
+<p>由Bianchi第一恒等式可得：<script type="math/tex">3(R(X,Y,Z,W)-R'(X,Y,Z,W))=0</script> 故 $R\equiv R’$ $\square$</p>
+<p><strong>命题 1.5</strong>. 曲率张量 $R$ 由各截面曲率完全确定。</p>
+<p><strong>证明</strong> 由引理[1.4]直接得到。 $\square$</p>
+<h2 id="Ricci曲率和数量曲率"><a href="#Ricci曲率和数量曲率" class="headerlink" title="Ricci曲率和数量曲率"></a>Ricci曲率和数量曲率</h2><p><strong>定义 1.4</strong>. 对一点 $p \in (M,g)$ 处的单位切向量 $z\in T_pM$，记 $z=z_n$，$\{z_i\}$ 是 $p$ 点处的单位正交标架，定义 $p$ 点处沿 $z$ 方向的<strong>Ricci曲率</strong>为：</p>
+<script type="math/tex; mode=display">\mathrm{Ric}_p(z)\triangleq\frac{1}{n-1}\sum_i R(z,z_i,z,z_i)</script><p>点 $p$ 处的<strong>数量曲率</strong>定义为：</p>
+<script type="math/tex; mode=display">\mathrm{K}_p\triangleq \dfrac{1}{n}\sum_i \mathrm{Ric}_p(z_i)</script><p>以上定义的合理性仍需证明，即要说明Ricci曲率和数量曲率与该点处单位正交标架 $\{z_i\}$ 的选取无关。</p>
+<p><strong>证明</strong> 定义 $Q(x,y)\triangleq\mathrm{tr}(z\mapsto R(x,z)y)$ (线性变换的迹)</p>
+<p>则 <script type="math/tex">Q(x,y)=\sum_i\left<R(x,z_i)y,z_i\right></script></p>
+<p>可以看出 $\mathrm{Ric}_p(z)=\dfrac{1}{n-1}Q(z,z)$，从而 $\mathrm{Ric}_p(z)$ 是内蕴的。</p>
+<p>又 $Q(x,y)$ 是一个二阶对称张量，可通过</p>
+<script type="math/tex; mode=display">\left<K(x)，y\right>=Q(x,y)</script><p>定义线性变换 $K(x)$，可以看出 $K$ 是自对偶的。</p>
+<p><script type="math/tex">\begin{aligned}
+        \mathrm{tr}(K)&=\sum_i \left<K(z_i),z_i\right>=\sum_i Q(z_i,z_i)\\
+        &=(n-1)\sum_i \mathrm{Ric}(z_i)=n(n-1)\mathrm{K}_p
+    \end{aligned}</script> 即证明 $\mathrm{K}_p$ 是内蕴的。 $\square$</p>
+<p><em>评注 1.1</em>. 上述证明中的二阶对称张量 $\dfrac{1}{n-1}Q(x,y)$<br>称为<strong>Ricci张量</strong></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Brocc.
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/03/24/Riemann-geometry-2/" title="黎曼几何2：曲率张量">http://example.com/2022/03/24/Riemann-geometry-2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/28/Riemann-geometry-1/" rel="prev" title="黎曼几何1：黎曼流形和联络">
+      <i class="fa fa-chevron-left"></i> 黎曼几何1：黎曼流形和联络
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NTUzNy8zMjAwNA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B2%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">曲率</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B2%E7%8E%87%E5%BC%A0%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">曲率张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%AA%E9%9D%A2%E6%9B%B2%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">截面曲率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ricci%E6%9B%B2%E7%8E%87%E5%92%8C%E6%95%B0%E9%87%8F%E6%9B%B2%E7%8E%87"><span class="nav-number">1.3.</span> <span class="nav-text">Ricci曲率和数量曲率</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Brocc.</p>
+  <div class="site-description" itemprop="description">天地有正气，杂然赋流形</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=997599826@qq.com" title="E-Mail → http:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;997599826@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wei-wu-81-49" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wei-wu-81-49" rel="noopener" target="_blank"><i class="gratipay fa-fw"></i>知乎</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019-08 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Brocc.</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
