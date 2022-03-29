@@ -22,19 +22,19 @@
     var CONFIG = {"hostname":"brocchyc.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言该系列是我学习微分流形的笔记，采用的教材是陈省身、陈维恒的《微分几何讲义》。">
+  <meta name="description" content="黎曼流形的结构方程挠率张量和曲率张量定义 1.1. 仿射流形 $(M,\nabla)$ 上，选取一组局部标架 $\{e_i\}$，由挠率算子定义挠率张量 $T^i$ 满足 T(X,Y)&#x3D;T^i(X,Y)e_i 又若 $M$ 为黎曼流形，由曲率算子定义曲率张量 $\Omega^i_j$ 满足 R(X,Y)e_j&#x3D;-\Omega^i_j(X,Y)e_i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.微分流形">
-<meta property="og:url" content="http://brocchyc.github.io/2021/07/12/manifolds-1/index.html">
+<meta property="og:title" content="黎曼几何3：黎曼流形的结构方程">
+<meta property="og:url" content="http://brocchyc.github.io/2022/03/29/Riemann-geometry-3/index.html">
 <meta property="og:site_name" content="Brocc.&#39;s Blog">
-<meta property="og:description" content="前言该系列是我学习微分流形的笔记，采用的教材是陈省身、陈维恒的《微分几何讲义》。">
+<meta property="og:description" content="黎曼流形的结构方程挠率张量和曲率张量定义 1.1. 仿射流形 $(M,\nabla)$ 上，选取一组局部标架 $\{e_i\}$，由挠率算子定义挠率张量 $T^i$ 满足 T(X,Y)&#x3D;T^i(X,Y)e_i 又若 $M$ 为黎曼流形，由曲率算子定义曲率张量 $\Omega^i_j$ 满足 R(X,Y)e_j&#x3D;-\Omega^i_j(X,Y)e_i">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-12T04:39:00.000Z">
-<meta property="article:modified_time" content="2022-02-18T11:40:03.804Z">
+<meta property="article:published_time" content="2022-03-29T08:36:21.000Z">
+<meta property="article:modified_time" content="2022-03-29T08:47:49.598Z">
 <meta property="article:author" content="Brocc.">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://brocchyc.github.io/2021/07/12/manifolds-1/">
+<link rel="canonical" href="http://brocchyc.github.io/2022/03/29/Riemann-geometry-3/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>1.微分流形 | Brocc.'s Blog</title>
+  <title>黎曼几何3：黎曼流形的结构方程 | Brocc.'s Blog</title>
   
 
 
@@ -174,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://brocchyc.github.io/2021/07/12/manifolds-1/">
+    <link itemprop="mainEntityOfPage" href="http://brocchyc.github.io/2022/03/29/Riemann-geometry-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -187,7 +187,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          1.微分流形
+          黎曼几何3：黎曼流形的结构方程
         </h1>
 
         <div class="post-meta">
@@ -196,16 +196,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-07-12 12:39:00" itemprop="dateCreated datePublished" datetime="2021-07-12T12:39:00+08:00">2021-07-12</time>
+              <time title="创建时间：2022-03-29 16:36:21 / 修改时间：16:47:49" itemprop="dateCreated datePublished" datetime="2022-03-29T16:36:21+08:00">2022-03-29</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-18 19:40:03" itemprop="dateModified" datetime="2022-02-18T19:40:03+08:00">2022-02-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -216,7 +210,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%87%A0%E4%BD%95/%E5%BE%AE%E5%88%86%E6%B5%81%E5%BD%A2/" itemprop="url" rel="index"><span itemprop="name">微分流形</span></a>
+                  <a href="/categories/%E5%87%A0%E4%BD%95/%E9%BB%8E%E6%9B%BC%E5%87%A0%E4%BD%95/" itemprop="url" rel="index"><span itemprop="name">黎曼几何</span></a>
                 </span>
             </span>
 
@@ -238,49 +232,74 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <!-- toc -->
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该系列是我学习微分流形的笔记，采用的教材是陈省身、陈维恒的《微分几何讲义》。<br> <span id="more"></span></p>
-<h2 id="微分流形"><a href="#微分流形" class="headerlink" title="微分流形"></a>微分流形</h2><p>本节通过坐标图册的方式构造了一种新的几何对象——流形，并在其上赋予微分结构。</p>
-<h3 id="拓扑流形"><a href="#拓扑流形" class="headerlink" title="拓扑流形"></a>拓扑流形</h3><p>拓扑空间 $M$ 称为 $m$ 维拓扑流形，若其满足以下条件：</p>
-<ol>
-<li>Hausdorff空间</li>
-<li>$\forall x\in M\quad \exists\, x\ \text{的邻域}\,U\quad s.t. \quad U\ \text{同胚于}\, \mathbb{R}^m$ 中的开集。</li>
-</ol>
-<p><strong>注：</strong> 本书当中一般约定流形 $M$ 满足C2条件，即：$M$ 有可数的拓扑基</p>
-<h3 id="微分结构"><a href="#微分结构" class="headerlink" title="微分结构"></a>微分结构</h3><h4 id="坐标卡"><a href="#坐标卡" class="headerlink" title="坐标卡"></a>坐标卡</h4><p>$(U,\phi_U)$ 称为坐标卡，$\phi_U$ 是 $M$ 中开集 $U$ 与 $\mathbb{R}^m$ 中开集的同胚。</p>
-<h4 id="坐标卡的相容性"><a href="#坐标卡的相容性" class="headerlink" title="坐标卡的相容性"></a>坐标卡的相容性</h4><p>两个坐标卡 $(U,\phi_U)$ 和 $(V,\phi_V)$ 称为 $C^r$- 相容的，若或者 $U\cap V= \varnothing$，或者 $U\cap V \neq \varnothing$ 有 $\phi_U\circ\phi_V^{-1}$ 和 $\phi_V\circ \phi_U^{-1}$ 都是 $C^r$- 映照 </p>
-<h4 id="坐标图册"><a href="#坐标图册" class="headerlink" title="坐标图册"></a>坐标图册</h4><p>流形 $M$ 的开覆盖 $\mathcal{U}=\{U_\alpha\}_{\alpha\in\Lambda}$ 称为 $M$ 的 $C^r$- 坐标图册，若 $U_\alpha$ 之间均是 $C^r$- 相容的。</p>
-<h4 id="微分结构-1"><a href="#微分结构-1" class="headerlink" title="微分结构"></a>微分结构</h4><p>流形 $M$ 上的极大 $C^r$- 坐标图册 $\mathscr{A}$ 称为 $M$ 上的一个 $C^r$- 微分结构。</p>
-<p>极大的内涵是：对于任一与 $\mathscr{A}$ $C^r$- 相容的坐标卡 $U$，均有 $U\in \mathscr{A}$</p>
-<p>定义了微分结构的流形，称为 <strong>$C^r$- 微分流形</strong></p>
-<p>特别地，具有 $C^\infty$- 微分结构的流形称为<strong>光滑流形</strong></p>
-<p>至此我们在拓扑流形上定义了微分结构，使之成为微分流形，以此为基础，我们可以讨论流形之间映照的可微性。</p>
-<p><strong>注：</strong> 无特别说明，此后我们讨论的流形是光滑流形。</p>
-<h4 id="C-infty-映照"><a href="#C-infty-映照" class="headerlink" title="$C^\infty$- 映照"></a>$C^\infty$- 映照</h4><p>流形 $M$ 和 $N$ 之间的映照 $f:M\rightarrow N$ 称为 $C^\infty$ 的，是指：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\forall p\in M\quad q\triangleq f(p)\in N   \quad\exists p\ \text{坐标卡}\,U\quad q\ \text{坐标卡}\,V\\
-s.t. \quad \phi_V\circ f \circ\phi_U^{-1}\ \text{是}\,C^\infty\ \text{的}
-\end{aligned}</script><h3 id="切空间、余切空间"><a href="#切空间、余切空间" class="headerlink" title="切空间、余切空间"></a>切空间、余切空间</h3><p>$M$ 是一流形，$p\in M$ 是其上一点，本节我们讨论流形在一点邻近的性态。</p>
-<h4 id="函数芽"><a href="#函数芽" class="headerlink" title="函数芽"></a>函数芽</h4><p>以 $C_p^\infty$ 记在 $p$ 邻域内 $C^\infty$ 的函数全体。</p>
-<p>在 $C_p^\infty$ 上定义等价关系 $\sim$ 如下：</p>
-<script type="math/tex; mode=display">f,g\in C_p^\infty \quad f \sim g\Leftrightarrow \exists \,p \ \text{邻域}\, U\quad s.t.\quad f|_U=g|_U</script><p>定义 $\mathscr{F}_p\triangleq C_p^\infty /\sim$ ，其中元素 $[f]$ 称为流形 $M$ 在 $p$ 点处的 $C^\infty$- 函数芽</p>
-<h4 id="切向量"><a href="#切向量" class="headerlink" title="切向量"></a>切向量</h4><p>$\gamma:(-\delta,\delta)\rightarrow M$ 是 $p$ 邻近的 $C^\infty$- 曲线，可定义 $\gamma$ 对函数芽 $[f]$ 的作用为：</p>
-<script type="math/tex; mode=display">
-<\gamma,[f]>\triangleq \left. \frac{\mathrm{d}(f\circ\gamma)}{\mathrm{d}t}\right |_{t=0}</script><p>事实上，$\gamma$ 表示了一个切向量。</p>
-<h4 id="余切空间"><a href="#余切空间" class="headerlink" title="余切空间"></a>余切空间</h4><p>定义 $\mathscr{H}_p\triangleq\left\{ [f]\in \mathscr{F}_p\,|\quad&lt;\gamma,[f]&gt;= 0\quad \forall \gamma\right\}$</p>
-<p>显见 $\mathscr{H}_p$ 是 $\mathscr{F}_p$ 的线性子空间</p>
-<p>定义 $F^\star_p\triangleq \mathscr{F}_p/\mathscr{H}_p$ 为 $M$ 在 $p$ 点处的<strong>余切空间</strong>，其中元素记为 $(\mathrm{d}f)_p$，称为余切矢量。</p>
-<p>容易证明 $F^*_p$ 是一个 $m$ 维线性空间，$\{\mathrm{d}u^i\}_{i=1}^m$ 是其一组基，其中 $u^i$ 是坐标函数，将 $p\in M$ 映到相应的坐标分量。</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    <\gamma,\mathrm{d}f>&=\left. \frac{\mathrm{d}(f\circ\gamma)}{\mathrm{d}t}\right |_{t=0}\\
-    &= \left. \frac{\mathrm{d}((f\circ \phi_U^{-1})\circ(\phi_U\circ\gamma))}{\mathrm{d}t}\right |_{t=0}\\
-    &= \sum_{i}\frac{\partial (f\circ\phi_U^{-1})}{\partial u^i}\cdot \frac{\mathrm{d}(u^i\circ\gamma)}{\mathrm{d}t}\\
-    &=<\gamma,\sum_i \frac{\partial (f\circ\phi_U^{-1})}{\partial u^i}\mathrm{d}u^i>\\
-\end{aligned}</script><p>即：</p>
-<script type="math/tex; mode=display">
-\mathrm{d}f=\sum_i \frac{\partial (f\circ\phi_U^{-1})}{\partial u^i}\mathrm{d}u^i</script><h4 id="切空间"><a href="#切空间" class="headerlink" title="切空间"></a>切空间</h4><p>定义 $M$ 在 $p$ 处的切空间 $T_{p}$ 为余切空间 $T^*_p$ 的对偶空间，容易证明 $T_p$ 是 $m$ 维线性空间，$\left \{\dfrac{\partial }{\partial u^i}\right \}_{i=1}^m$ 是 $T_p$ 的一组基。</p>
+        <h1 id="黎曼流形的结构方程"><a href="#黎曼流形的结构方程" class="headerlink" title="黎曼流形的结构方程"></a>黎曼流形的结构方程</h1><h2 id="挠率张量和曲率张量"><a href="#挠率张量和曲率张量" class="headerlink" title="挠率张量和曲率张量"></a>挠率张量和曲率张量</h2><p><strong>定义 1.1</strong>. 仿射流形 $(M,\nabla)$ 上，选取一组局部标架 $\{e_i\}$，由挠率算子定义<strong>挠率张量</strong> $T^i$ 满足 <script type="math/tex">T(X,Y)=T^i(X,Y)e_i</script></p>
+<p>又若 $M$ 为黎曼流形，由曲率算子定义<strong>曲率张量</strong> $\Omega^i_j$ 满足</p>
+<script type="math/tex; mode=display">R(X,Y)e_j=-\Omega^i_j(X,Y)e_i</script><span id="more"></span>
+<p><em>评注 1.1</em>.<br>应当注意由于不同材料中曲率算子定义可能相差一个符号，这里曲率张量的定义也与一些材料中相差一个符号，同样地，曲率张量分量的指标位置的约定也可能不同。</p>
+<p><strong>定理 1.1</strong>. 记一组局部标架场为 $\{e_i\}$，其对偶标架场为 $\{\omega^i\}$ 则挠率张量和曲率张量分别满足以下一形式的方程：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        T^i=&\,\mathrm{d}\omega^i+\omega^i_k\wedge\omega^k\\
+        \Omega^i_j=&\,\mathrm{d}\omega^i_j+\omega^i_k\wedge\omega^k_j
+    \end{aligned}</script><p><strong>证明</strong> 对 $X,Y\in \mathfrak{X}(M)$，记 $X=\omega^i(X)e_i$,$Y=\omega^i(Y)e_i$ <script type="math/tex">\begin{aligned}
+        T^i(X,Y)e_i=&T(X,Y)\\
+        =&\nabla_X(\omega^i(Y)e_i)-\nabla_Y(\omega^i(X)e_i)-\omega^i([X,Y])e_i\\
+        =&X(\omega^i(Y))e_i-Y(\omega^i(X))e_i-\omega^i([X,Y])e_i+\omega^i(Y)\nabla_Xe_i-\omega^i(X)\nabla_Ye_i\\
+        =&(X\omega^i(Y)-Y(\omega^i(X))-\omega^i([X,Y]))e_i+(\omega^i(Y)\omega^k_i(X)-\omega^i(X)\omega^k_i(Y))e_k\\
+        =&(\,\mathrm{d}\omega^i+\omega^i_k\wedge\omega^k)(X,Y)e_i
+    \end{aligned}</script> 从而第一式得证。第二式的证明完全类似。 $\square$</p>
+<h2 id="黎曼流形的结构方程-1"><a href="#黎曼流形的结构方程-1" class="headerlink" title="黎曼流形的结构方程"></a>黎曼流形的结构方程</h2><p><strong>定理 1.2</strong>. 黎曼流形 $(M,g)$ 上，取一组局部标架 $\{e_i\}$ 及其对偶 $\{\omega^i\}$ 则成立以下方程：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        \,\mathrm{d}\omega^i+\omega^i_k\wedge\omega^k=0\\
+        \,\mathrm{d}g_{ij}=\omega^k_ig_{kj}+\omega^k_jg_{ki}
+    \end{aligned}</script><p><strong>证明</strong><br>由于黎曼联络是无挠的，第一式由命题[1.1]的第一式直接得到。</p>
+<p>第二式等价于黎曼度量和联络的相容性。 $\square$</p>
+<p><em>评注 1.2</em>.<br>以上两式称为黎曼流形的<strong>结构方程</strong>，由结构方程有<strong>黎曼几何基本定理</strong>（黎曼联络的存在唯一性）的等价表述。</p>
+<p><strong>定理 1.3</strong>. 黎曼流形 $(M,g)$ 上，取一组局部标架 $\{e_i\}$ 及其对偶 $\{\omega^i\}$ 则存在唯一的一组一形式 $\{\omega^i_j\}$ 满足以下结构方程：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        \,\mathrm{d}\omega^i+\omega^i_k\wedge\omega^k=0\\
+        \,\mathrm{d}g_{ij}=\omega^k_ig_{kj}+\omega^k_jg_{ki}
+    \end{aligned}</script><p><strong>定理 1.4</strong>. 黎曼流形 $(M,g)$ 上，采取同样记号有： </p>
+<script type="math/tex; mode=display">\begin{aligned}
+            \Omega^i_j=&\,\mathrm{d}\omega^i_j+\omega^i_k\wedge\omega^k_j\\
+            \Omega^i_j=&-\dfrac{1}{2}R^i_{klj}\omega^k\wedge\omega^l\end{aligned}</script><p><em>评注 1.3</em>. 该二式称为<strong>曲率方程</strong>。</p>
+<p><strong>证明</strong> 第一式即命题[1.1]的第二式。</p>
+<p>下面证明第二式，由于： </p>
+<script type="math/tex; mode=display">\begin{aligned}
+        R_{ijkl}=&\left<R(e_i,e_j)e_k,e_l\right>
+        =\left<-\Omega_k^h(e_i,e_j)e_h,e_l\right>\\
+        =&-\Omega^h_k(e_i,e_j)g_{hl}
+    \end{aligned}</script><p>从而 $R_{ijkl}=-\Omega^h_k(e_i,e_j)g_{hl}$，也即 $g^{hl}R_{ijkl}=-\Omega^h_k(e_i,e_j)$</p>
+<script type="math/tex; mode=display">\begin{aligned}
+        \Rightarrow \Omega^h_k=&-g^{hl}R_{ijkl}w^i\otimes \omega^j\\
+        =&-R^h_{ijk}\omega^i\otimes\omega^j\\
+        =&-\sum_{i<j}R^h_{ijk}(\omega^i\otimes\omega^j-\omega^j\otimes\omega^i)\\
+        =&-\sum_{i<j}R^h_{ijk}\omega^i\wedge\omega^j\\
+        =&-\dfrac{1}{2}R^h_{ijk}\omega^i\wedge\omega^j
+    \end{aligned}</script><p>$\square$</p>
+<p><strong>定义 1.2</strong>. 定义 $\Omega=(\Omega^i_j)$ 为曲率张量分量构成的矩阵，称为<strong>曲率矩阵</strong>。</p>
+<p>记 $\omega=(\omega^i_j)$ 是联络形式的矩阵，则由 $\Omega^i_j=\,\mathrm{d}\omega^i_j+\omega^i_k\wedge\omega^k_j$ 可知</p>
+<script type="math/tex; mode=display">\Omega=\,\mathrm{d}\omega+\omega\wedge\omega</script><p><strong>命题 1.5</strong>. 若 $\omega$ 和 $\bar{\omega}$ 分别是局部标架场 $\{e_i\}$ 和 $\bar{e}_i$ 下的联络形式矩阵。</p>
+<p>若标架场之间的变换矩阵为 $A=\{a^i_j\}$，即 $\bar{e}_j=a^i_je_i$。则成立变量代换公式：</p>
+<script type="math/tex; mode=display">A\bar{\omega}=\omega A+\,\mathrm{d}A</script><p><strong>证明</strong> 记 $e=\begin{pmatrix}e_1&amp;e_2&amp;\cdots&amp;e_n\end{pmatrix}$，$\bar{e}=\begin{pmatrix}\bar{e}_1&amp;\bar{e}_2&amp;\cdots&amp;\bar{e}_n\end{pmatrix}$</p>
+<p>则 </p>
+<script type="math/tex; mode=display">\begin{aligned}
+        \nabla \bar{e}=\bar{e}\bar{\omega}=eA\bar{\omega}
+    \end{aligned}</script><p>又 </p>
+<script type="math/tex; mode=display">\begin{aligned}
+        \nabla\bar{e}=&\nabla\bar{e}A=(\nabla e)A+e\cdot \,\mathrm{d}A\\
+        =&e\omega A+e\cdot \,\mathrm{d}A\\
+        \Rightarrow &A\bar{\omega}=\omega A+\,\mathrm{d}A
+    \end{aligned}</script><p>$\square$</p>
+<p><strong>推论 1.6</strong>. 设 $\Omega$ 是局部标架场 $\{e_i\}$ 和其对偶 $\{\omega^i\}$ 下的曲率矩阵，$\bar{\Omega}$ 是另一组局部标架场 $\{\bar{e}_i\}$ 和$\{\bar{\omega}^i\}$ 下的曲率矩阵。</p>
+<p>则有如下变换公式： </p>
+<script type="math/tex; mode=display">\bar{\Omega}=A^{-1}\Omega A</script><p><strong>证明</strong> 对 $A\bar{\omega}=\omega A+\,\mathrm{d}A$ 两边求外微分：</p>
+<p><script type="math/tex">\begin{aligned}
+        \,\mathrm{d}A\wedge\bar{\omega}+A\cdot\,\mathrm{d}\bar{\omega}=&\,\mathrm{d}\omega\cdot A-\omega\wedge\,\mathrm{d}A\\
+        (A\bar{\omega}-\omega A)\wedge\bar{\omega}+A\cdot\,\mathrm{d}\bar{\omega}=&\,\mathrm{d}\omega\cdot A-\omega\wedge (A\bar{\omega}-\omega A)\\
+        A(\,\mathrm{d}\bar{\omega}+\bar{\omega}\wedge\bar{\omega})=&(\omega\wedge\omega+\,\mathrm{d}\omega)A
+    \end{aligned}</script> 即证 <script type="math/tex">\bar{\Omega}=A^{-1}\Omega A</script> $\square$</p>
+<p><em>评注 1.4</em>. 应当注意度量张量 $g$ 和联络 $\nabla$<br>的定义是不依赖于标架场的，进而挠率算子 $T(X,Y)$ 和曲率算子 $R(X,Y)$（进而曲率张量 $R(X,Y,Z,W)$）的定义是不依赖于标架场的。</p>
+<p>但是，联络形式 $\omega^i_j$ （从而联络系数 $\Gamma^i_{jk}$）、挠率算子的分量 $T^i(X,Y)$ 和曲率张量的分量 $\Omega^i_j$ 是与选取的坐标有关的。</p>
 
     </div>
 
@@ -296,7 +315,7 @@ s.t. \quad \phi_V\circ f \circ\phi_U^{-1}\ \text{是}\,C^\infty\ \text{的}
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://brocchyc.github.io/2021/07/12/manifolds-1/" title="1.微分流形">http://brocchyc.github.io/2021/07/12/manifolds-1/</a>
+    <a href="http://brocchyc.github.io/2022/03/29/Riemann-geometry-3/" title="黎曼几何3：黎曼流形的结构方程">http://brocchyc.github.io/2022/03/29/Riemann-geometry-3/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -313,13 +332,10 @@ s.t. \quad \phi_V\circ f \circ\phi_U^{-1}\ \text{是}\,C^\infty\ \text{的}
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/07/11/math-analysis-1/" rel="prev" title="隐函数定理及动力系统初步">
-      <i class="fa fa-chevron-left"></i> 隐函数定理及动力系统初步
+    <a href="/2022/03/24/Riemann-geometry-2/" rel="prev" title="黎曼几何2：曲率张量">
+      <i class="fa fa-chevron-left"></i> 黎曼几何2：曲率张量
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/28/Riemann-geometry-1/" rel="next" title="黎曼几何1：黎曼流形和联络">
-      黎曼几何1：黎曼流形和联络 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -383,7 +399,7 @@ s.t. \quad \phi_V\circ f \circ\phi_U^{-1}\ \text{是}\,C^\infty\ \text{的}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E6%B5%81%E5%BD%A2"><span class="nav-number">2.</span> <span class="nav-text">微分流形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E6%B5%81%E5%BD%A2"><span class="nav-number">2.1.</span> <span class="nav-text">拓扑流形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">微分结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E5%8D%A1"><span class="nav-number">2.2.1.</span> <span class="nav-text">坐标卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E5%8D%A1%E7%9A%84%E7%9B%B8%E5%AE%B9%E6%80%A7"><span class="nav-number">2.2.2.</span> <span class="nav-text">坐标卡的相容性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E5%9B%BE%E5%86%8C"><span class="nav-number">2.2.3.</span> <span class="nav-text">坐标图册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">微分结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-infty-%E6%98%A0%E7%85%A7"><span class="nav-number">2.2.5.</span> <span class="nav-text">$C^\infty$- 映照</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%A9%BA%E9%97%B4%E3%80%81%E4%BD%99%E5%88%87%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.</span> <span class="nav-text">切空间、余切空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%8A%BD"><span class="nav-number">2.3.1.</span> <span class="nav-text">函数芽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E5%90%91%E9%87%8F"><span class="nav-number">2.3.2.</span> <span class="nav-text">切向量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%99%E5%88%87%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.3.</span> <span class="nav-text">余切空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.4.</span> <span class="nav-text">切空间</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%BB%8E%E6%9B%BC%E6%B5%81%E5%BD%A2%E7%9A%84%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">黎曼流形的结构方程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%A0%E7%8E%87%E5%BC%A0%E9%87%8F%E5%92%8C%E6%9B%B2%E7%8E%87%E5%BC%A0%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">挠率张量和曲率张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%8E%E6%9B%BC%E6%B5%81%E5%BD%A2%E7%9A%84%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B-1"><span class="nav-number">1.2.</span> <span class="nav-text">黎曼流形的结构方程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
